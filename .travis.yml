@@ -5,5 +5,14 @@ cache:
   - pip
   - apt
 
-install: "bash .travis_setup.sh"
+addons:
+  apt:
+    packages:
+    - build-essential
+    - libssl-dev
+    - libffi-dev
+    - python-dev
+    - swig
+
+install: "pip install -r requirements.txt"
 script: "bash run_tests.sh"
