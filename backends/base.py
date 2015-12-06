@@ -70,7 +70,6 @@ class OSCryptoBase(BaseBackend):
             args.append(self.IV)
 
         self.cipher_text = self.encrypt(*args)[1]
-        print self.cipher_text
 
     def decipher(self):
         args = [self.key, self.cipher_text]
