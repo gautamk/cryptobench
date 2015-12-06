@@ -4,7 +4,8 @@ from cryptography.hazmat.primitives import ciphers
 from cryptography.hazmat.primitives.ciphers import algorithms, modes
 from oscrypto.symmetric import aes_cbc_pkcs7_encrypt, aes_cbc_pkcs7_decrypt
 
-from backends.base import AESBase, PyCryptoBase, CryptographyIOBase, OSCryptoBase
+from backends.base.algorithm import AESBase
+from backends.base.library import PyCryptoBase, CryptographyIOBase, OSCryptoBase
 
 
 class PyCrypto(AESBase, PyCryptoBase):
@@ -29,5 +30,3 @@ class OSCrypto(AESBase, OSCryptoBase):
         super(OSCrypto, self).__init__()
         self.encrypt = aes_cbc_pkcs7_encrypt
         self.decrypt = aes_cbc_pkcs7_decrypt
-
-

@@ -21,4 +21,3 @@ class BaseBackend(object):
             ENCRYPTION: round(timeit.timeit(self.encipher, number=ITERATIONS), 3),
             DECRYPTION: round(timeit.timeit(self.decipher, number=ITERATIONS), 3)
         }
-   

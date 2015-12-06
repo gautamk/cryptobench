@@ -4,7 +4,8 @@ from cryptography.hazmat.primitives import ciphers
 from cryptography.hazmat.primitives.ciphers import algorithms
 from oscrypto.symmetric import rc4_encrypt, rc4_decrypt
 
-from backends.base import RC4Base, PyCryptoBase, CryptographyIOBase, OSCryptoBase
+from backends.base.algorithm import *
+from backends.base.library import *
 
 
 class PyCrypto(RC4Base, PyCryptoBase):

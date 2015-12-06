@@ -22,3 +22,9 @@ class RC4Base(BaseBackend):
     def __init__(self):
         super(RC4Base, self).__init__()
         self.key = get_key(16)
+
+
+class HashBase(BaseBackend):
+    def __init__(self):
+        super(HashBase, self).__init__()
+
