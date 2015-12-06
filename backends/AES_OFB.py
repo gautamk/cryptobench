@@ -27,5 +27,5 @@ class CryptographyIO(AESBase, CryptographyIOBase):
 
 class PyElliptic(AESBase, PyEllipticBase):
     def __init__(self):
-        super(PyEllipticBase, self).__init__()
+        super(PyElliptic, self).__init__()
         self.ciphername = 'aes-256-ofb'
