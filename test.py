@@ -1,12 +1,13 @@
 import json
 
 from cipherprofile.block_ciphers import aes, triple_des
-from cipherprofile.stream_ciphers import rc4
+from cipherprofile.stream_ciphers import rc4, aes_ofb
 
 modules = {
     'AES': aes,
     'TripleDES': triple_des,
-    'RC4': rc4
+    'RC4': rc4,
+    'AES_OFB': aes_ofb
 }
 
 
