@@ -27,4 +27,10 @@ class RC4Base(BaseBackend):
 class HashBase(BaseBackend):
     def __init__(self):
         super(HashBase, self).__init__()
+        self.algorithm = None
 
+    def decipher(self):
+        self.algorithm(self.plain_text)
+
+    def encipher(self):
+        pass
