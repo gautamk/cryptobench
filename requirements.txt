@@ -2,3 +2,4 @@ pycrypto==2.6.1
 M2Crypto==0.22.5
 cryptography==1.1.1
 oscrypto==0.14.1
+pyelliptic==1.5.7

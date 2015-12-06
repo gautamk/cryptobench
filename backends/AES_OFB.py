@@ -3,7 +3,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import ciphers
 from cryptography.hazmat.primitives.ciphers import algorithms, modes
 
-from backends.base import AESBase, PyCryptoBase, CryptographyIOBase
+from backends.base import AESBase, PyCryptoBase, CryptographyIOBase, PyEllipticBase
 
 
 class PyCrypto(AESBase, PyCryptoBase):
@@ -23,3 +23,9 @@ class CryptographyIO(AESBase, CryptographyIOBase):
         self.algorithm = ciphers.Cipher(algorithms.AES(self.key),
                                         modes.OFB(self.IV),
                                         backend=default_backend())
+
+
+class PyElliptic(AESBase, PyEllipticBase):
+    def __init__(self):
+        super(PyEllipticBase, self).__init__()
+        self.ciphername = 'aes-256-ofb'

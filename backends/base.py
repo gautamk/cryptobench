@@ -1,5 +1,6 @@
 import timeit
 
+import pyelliptic
 from Crypto.Cipher import AES, DES3
 
 from constants import *
@@ -77,3 +78,13 @@ class OSCryptoBase(BaseBackend):
             args.append(self.IV)
 
         self.decrypt(*args)
+
+
+class PyEllipticBase(BaseBackend):
+    def encipher(self):
+        ctx = pyelliptic.Cipher(self.key, self.IV, 1, ciphername=self.ciphername)
+        self.cipher_text = ctx.update(self.plain_text) + ctx.final()
+
+    def decipher(self):
+        ctx = pyelliptic.Cipher(self.key, self.IV, 0, ciphername=self.ciphername)
+        ctx.ciphering(self.cipher_text)
