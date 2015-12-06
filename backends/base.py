@@ -38,6 +38,13 @@ class TripleDESBase(BaseBackend):
         self.key = get_key(16)
         self.IV = get_iv(DES3.block_size)
 
+
+class RC4Base(BaseBackend):
+    def __init__(self):
+        super(RC4Base, self).__init__()
+        self.key = get_key(16)
+
+
 class PyCryptoBase(BaseBackend):
     def encipher(self):
         self.cipher_text = self.algorithm.encrypt(self.plain_text)
@@ -58,9 +65,16 @@ class CryptographyIOBase(BaseBackend):
 
 class OSCryptoBase(BaseBackend):
     def encipher(self):
-        self.cipher_text = self.encrypt(self.key, self.plain_text, self.IV)[1]
+        args = [self.key, self.plain_text]
+        if hasattr(self, 'IV'):
+            args.append(self.IV)
+
+        self.cipher_text = self.encrypt(*args)[1]
+        print self.cipher_text
 
     def decipher(self):
-        self.decrypt(self.key, self.cipher_text, self.IV)
+        args = [self.key, self.cipher_text]
+        if hasattr(self, 'IV'):
+            args.append(self.IV)
 
-
+        self.decrypt(*args)

@@ -1,11 +1,12 @@
 import json
-from multiprocessing import Pool
 
 from cipherprofile.block_ciphers import aes, triple_des
+from cipherprofile.stream_ciphers import rc4
 
 modules = {
     'AES': aes,
-    'TripleDES': triple_des
+    'TripleDES': triple_des,
+    'RC4': rc4
 }
 
 
@@ -15,7 +16,6 @@ def _benchmark(backend_instance):
 
 def test():
     results = {}
-    pool = Pool(3)
     for algorithm_name, module in modules.iteritems():
         results[algorithm_name] = {}
         print "Algorithm " + algorithm_name
