@@ -30,7 +30,7 @@ class HashBase(BaseBackend):
         self.algorithm = None
 
     def decipher(self):
-        self.algorithm(self.plain_text)
+        pass
 
     def encipher(self):
-        pass
+        self.algorithm(self.plain_text)
