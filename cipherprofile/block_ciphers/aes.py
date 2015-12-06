@@ -5,11 +5,3 @@ backends = [
     CryptographyIO,
     OSCrypto
 ]
-
-
-def test_all():
-    results = {}
-    for backend in backends:
-        instance = backend()
-        results[backend.__name__] = instance.benchmark()
-    return results
