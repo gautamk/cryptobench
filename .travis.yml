@@ -7,4 +7,4 @@ cache:
 
 sudo: required
 install: "bash install_dependencies.sh"
-script: "bash runtests.sh"
+script: "bash run_tests.sh"
