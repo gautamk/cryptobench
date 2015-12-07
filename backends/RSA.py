@@ -23,6 +23,8 @@ class BaseAsymetric(BaseBackend):
 
     def decipher(self):
         for i, chunk in enumerate(self.cipher_text):
+            if i % (CHUNK_RATIO / 10) == 0:
+                print "Decrypting %d of %d" % (i, self.chunks_len)
             self._decipher(chunk)
 
     def _decipher(self, cipher_text):
@@ -32,7 +34,7 @@ class BaseAsymetric(BaseBackend):
         self.cipher_text = []
         for i, chunk in enumerate(self.chunks):
             if i % (CHUNK_RATIO / 10) == 0:
-                print i
+                print "Encrypting %d of %d" % (i, self.chunks_len)
             self.cipher_text.append(self._encipher(chunk))
 
     def _encipher(self, plain_text):
