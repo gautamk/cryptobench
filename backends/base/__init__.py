@@ -8,7 +8,8 @@ class BaseBackend(object):
     def __init__(self):
         super(BaseBackend, self).__init__()
         self.plain_text = get_plain_text()
-        self.cipher_text = None
+        self.cipher_text = None,
+        self.key = None
 
     def encipher(self):
         raise NotImplementedError()
