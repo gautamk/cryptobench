@@ -1,18 +1,19 @@
 import json
 
-from cipherprofile.asymmetric import rsa
+from cipherprofile.asymmetric import rsa, ecies
 from cipherprofile.block_ciphers import aes, triple_des
 from cipherprofile.hashes import md5, sha512
 from cipherprofile.stream_ciphers import rc4, aes_ofb
 
 modules = {
-    'AES': aes,
-    'TripleDES': triple_des,
-    'RC4': rc4,
-    'AES_OFB': aes_ofb,
-    'MD5': md5,
-    'SHA512': sha512,
-    'RSA': rsa
+    # 'AES': aes,
+    # 'TripleDES': triple_des,
+    # 'RC4': rc4,
+    # 'AES_OFB': aes_ofb,
+    # 'MD5': md5,
+    # 'SHA512': sha512,
+    # 'RSA': rsa,
+    'ECIES': ecies
 }
 
 

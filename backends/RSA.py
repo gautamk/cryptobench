@@ -1,5 +1,6 @@
 import timeit
 
+import pyelliptic
 from Crypto.PublicKey import RSA
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
@@ -100,3 +101,20 @@ class OSCrpto(BaseAsymetric):
 
     def _decipher(self, cipher_text):
         rsa_oaep_decrypt(self.key[1], cipher_text)
+
+
+class ECIES(BaseAsymetric):
+    def _decipher(self, cipher_text):
+        self.alice.decrypt(cipher_text)
+
+    def _encipher(self, plain_text):
+        return self.alice.encrypt(
+            plain_text,
+            self.alice.get_pubkey(),
+            ephemcurve=self.curve
+        )
+
+    def __init__(self):
+        super(ECIES, self).__init__()
+        self.curve = 'sect571r1'
+        self.alice = pyelliptic.ECC(curve=self.curve)
