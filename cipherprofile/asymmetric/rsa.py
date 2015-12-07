@@ -3,5 +3,6 @@ from backends.RSA import *
 backends = [
     PyCrypto,
     CryptographyIO,
-    OSCrpto
+    OSCrpto,
+    # ELGamal
 ]

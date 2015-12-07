@@ -1,7 +1,10 @@
 import timeit
 
 import pyelliptic
+from Crypto import Random
+from Crypto.PublicKey import ElGamal
 from Crypto.PublicKey import RSA
+from Crypto.Random import random
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
@@ -118,3 +121,16 @@ class ECIES(BaseAsymetric):
         super(ECIES, self).__init__()
         self.curve = 'sect571r1'
         self.alice = pyelliptic.ECC(curve=self.curve)
+
+
+class ELGamal(BaseAsymetric):
+    def __init__(self):
+        super(ELGamal, self).__init__()
+        self.key = ElGamal.generate(1024, Random.new().read)
+        self.k = random.StrongRandom().randint(1, self.key.p - 1)
+
+    def _decipher(self, cipher_text):
+        self.key.decrypt(cipher_text)
+
+    def _encipher(self, plain_text):
+        return self.key.encrypt(plain_text, self.k)

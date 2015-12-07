@@ -6,14 +6,14 @@ from cipherprofile.hashes import md5, sha512
 from cipherprofile.stream_ciphers import rc4, aes_ofb
 
 modules = {
-    # 'AES': aes,
-    # 'TripleDES': triple_des,
-    # 'RC4': rc4,
-    # 'AES_OFB': aes_ofb,
-    # 'MD5': md5,
-    # 'SHA512': sha512,
-    # 'RSA': rsa,
-    'ECIES': ecies
+    'AES': aes,
+    'TripleDES': triple_des,
+    'RC4': rc4,
+    'AES_OFB': aes_ofb,
+    'MD5': md5,
+    'SHA512': sha512,
+    'RSA': rsa,
+
 }
 
 
